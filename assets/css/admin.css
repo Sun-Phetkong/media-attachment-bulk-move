@@ -1,0 +1,432 @@
+/**
+ * Media Attachment Bulk Move - Admin Styles
+ * Version 1.2.2
+ */
+
+/* Container */
+.mabm-attachments-container {
+    padding: 10px 0;
+}
+
+.mabm-no-attachments {
+    color: #666;
+    font-style: italic;
+    margin: 0;
+    padding: 10px 0;
+}
+
+.mabm-attachment-count {
+    margin: 0 0 15px;
+    padding: 8px 12px;
+    background: #f0f6fc;
+    border-left: 4px solid #2271b1;
+    color: #1d2327;
+    font-weight: 500;
+}
+
+/* Bulk Actions Bar */
+.mabm-bulk-actions-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 12px 15px;
+    background: #f6f7f7;
+    border: 1px solid #dcdcde;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+.mabm-bulk-move-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.mabm-selected-count {
+    font-size: 13px;
+    color: #50575e;
+    min-width: 80px;
+}
+
+.mabm-move-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+}
+
+/* Post Search Input */
+.mabm-post-search {
+    width: 280px;
+    padding: 6px 10px;
+    border: 1px solid #8c8f94;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+.mabm-post-search:focus {
+    border-color: #2271b1;
+    box-shadow: 0 0 0 1px #2271b1;
+    outline: none;
+}
+
+.mabm-post-search.has-selection {
+    background-color: #e7f5e8;
+    border-color: #46b450;
+}
+
+/* Search Results Dropdown */
+.mabm-search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 350px;
+    max-height: 300px;
+    overflow-y: auto;
+    background: #fff;
+    border: 1px solid #dcdcde;
+    border-radius: 4px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+    z-index: 100;
+    display: none;
+}
+
+.mabm-search-results.active {
+    display: block;
+}
+
+.mabm-search-result-item {
+    padding: 10px 12px;
+    cursor: pointer;
+    border-bottom: 1px solid #f0f0f1;
+    transition: background-color 0.15s ease;
+}
+
+.mabm-search-result-item:last-child {
+    border-bottom: none;
+}
+
+.mabm-search-result-item:hover,
+.mabm-search-result-item.selected {
+    background-color: #f0f6fc;
+}
+
+.mabm-search-result-item.selected {
+    background-color: #dbeafe;
+}
+
+.mabm-result-title {
+    font-weight: 500;
+    color: #1d2327;
+    display: block;
+    margin-bottom: 3px;
+}
+
+.mabm-result-meta {
+    font-size: 11px;
+    color: #787c82;
+}
+
+.mabm-result-meta span {
+    margin-right: 10px;
+}
+
+.mabm-result-status {
+    display: inline-block;
+    padding: 1px 6px;
+    border-radius: 3px;
+    font-size: 10px;
+    text-transform: uppercase;
+}
+
+.mabm-result-status.publish {
+    background: #d4edda;
+    color: #155724;
+}
+
+.mabm-result-status.draft {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.mabm-result-status.private {
+    background: #e2e3e5;
+    color: #383d41;
+}
+
+.mabm-search-loading,
+.mabm-search-no-results {
+    padding: 15px;
+    text-align: center;
+    color: #787c82;
+    font-style: italic;
+}
+
+/* Move Button */
+#mabm-move-selected {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+#mabm-move-selected .dashicons {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+}
+
+#mabm-move-selected:disabled {
+    cursor: not-allowed;
+}
+
+/* Grid layout */
+.mabm-attachments-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 15px;
+}
+
+/* Individual attachment item */
+.mabm-attachment-item {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px;
+    background: #fff;
+    border: 1px solid #dcdcde;
+    border-radius: 4px;
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.mabm-attachment-item:hover {
+    border-color: #2271b1;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.mabm-attachment-item.mabm-removing {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.mabm-attachment-item.mabm-selected {
+    background-color: #f0f6fc;
+    border-color: #2271b1;
+}
+
+/* Row 1: Header with checkbox and filename */
+.mabm-attachment-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #f0f0f1;
+}
+
+/* Checkbox */
+.mabm-attachment-checkbox {
+    flex-shrink: 0;
+    padding: 4px;
+    margin: -4px;
+    cursor: pointer;
+    position: relative;
+    z-index: 10;
+}
+
+.mabm-attachment-checkbox input[type="checkbox"] {
+    margin: 0;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    position: relative;
+    z-index: 11;
+    -webkit-appearance: checkbox;
+    -moz-appearance: checkbox;
+    appearance: checkbox;
+}
+
+/* Ensure checkbox is always clickable */
+#mabm_media_attachments .mabm-attachment-checkbox,
+#mabm_media_attachments .mabm-attachment-checkbox input[type="checkbox"] {
+    pointer-events: auto !important;
+}
+
+/* Filename in header */
+.mabm-file-name {
+    flex: 1;
+    font-size: 13px;
+    font-weight: 600;
+    color: #1d2327;
+    word-break: break-word;
+    line-height: 1.4;
+}
+
+/* Select All checkbox in bulk bar */
+.mabm-select-all-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 5px;
+    position: relative;
+    z-index: 10;
+}
+
+.mabm-select-all-label input[type="checkbox"] {
+    margin: 0;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    -webkit-appearance: checkbox;
+    -moz-appearance: checkbox;
+    appearance: checkbox;
+}
+
+/* Row 2: Body with thumbnail, meta, and actions */
+.mabm-attachment-body {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Preview thumbnail */
+.mabm-attachment-preview {
+    flex-shrink: 0;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f6f7f7;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.mabm-attachment-preview img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+}
+
+.mabm-attachment-preview .mabm-mime-icon {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+}
+
+/* File meta info */
+.mabm-attachment-info {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.mabm-file-meta {
+    font-size: 11px;
+    color: #787c82;
+    line-height: 1.4;
+}
+
+/* Actions */
+.mabm-attachment-actions {
+    display: flex;
+    gap: 4px;
+    flex-shrink: 0;
+}
+
+.mabm-attachment-actions .button {
+    padding: 0 6px;
+    min-height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mabm-attachment-actions .dashicons {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+    line-height: 1;
+}
+
+.mabm-attachment-actions .button-link-delete {
+    color: #b32d2e;
+    border-color: #b32d2e;
+}
+
+.mabm-attachment-actions .button-link-delete:hover {
+    background: #b32d2e;
+    color: #fff;
+}
+
+.mabm-attachment-actions .button-link-delete:focus {
+    box-shadow: 0 0 0 1px #b32d2e;
+}
+
+/* Success message after move */
+.mabm-move-success {
+    padding: 10px 15px;
+    background: #d4edda;
+    border: 1px solid #c3e6cb;
+    border-radius: 4px;
+    color: #155724;
+    margin-bottom: 15px;
+}
+
+.mabm-move-success a {
+    color: #155724;
+    font-weight: 500;
+}
+
+/* Responsive */
+@media screen and (max-width: 782px) {
+    .mabm-bulk-actions-bar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .mabm-bulk-move-section {
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .mabm-move-controls {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .mabm-post-search {
+        width: 100%;
+    }
+
+    .mabm-search-results {
+        width: 100%;
+    }
+
+    #mabm-move-selected {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .mabm-attachments-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .mabm-attachment-body {
+        flex-wrap: wrap;
+    }
+
+    .mabm-attachment-actions {
+        width: 100%;
+        justify-content: flex-end;
+        margin-top: 8px;
+        padding-top: 8px;
+        border-top: 1px solid #f0f0f1;
+    }
+}
