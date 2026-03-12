@@ -3,7 +3,7 @@ Contributors: sunphetkong
 Tags: media, attachments, bulk, move, manage
 Requires at least: 5.0
 Tested up to: 6.9
-Stable tag: 1.2.3
+Stable tag: 1.2.4
 Requires PHP: 7.4
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -82,6 +82,9 @@ Yes! The plugin is fully internationalized and translation-ready. All strings us
 4. Responsive layout on mobile devices
 
 == Changelog ==
+
+= 1.2.4 - 2026-03-12 =
+* Fixed: Replace exclusionary `exclude` param in get_posts() with post-query PHP filtering to avoid performance issue (WordPressVIPMinimum warning)
 
 = 1.2.3 - 2026-01-16 =
 * Fixed text domain: Changed from constant to string literal for proper i18n parsing

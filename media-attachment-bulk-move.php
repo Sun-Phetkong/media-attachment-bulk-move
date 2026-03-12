@@ -3,7 +3,7 @@
  * Plugin Name: Media Attachment Bulk Move
  * Plugin URI:
  * Description: Displays all media files attached to a post/page in the backend edit screen with bulk move functionality.
- * Version: 1.2.3
+ * Version: 1.2.4
  * Author: Sun Phetkong
  * Author URI: https://github.com/Sun-Phetkong
  * License: GPL v3 or later
