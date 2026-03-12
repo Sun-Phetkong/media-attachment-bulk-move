@@ -285,13 +285,15 @@ class Media_Attachment_Bulk_Move {
             'post_type'      => array_values( $post_types ),
             'post_status'    => array( 'publish', 'draft', 'private' ),
             's'              => $search,
-            'posts_per_page' => 20,
-            'exclude'        => array( $current_post_id ),
+            'posts_per_page' => 21,
             'orderby'        => 'relevance',
         ) );
 
         $results = array();
         foreach ( $posts as $post ) {
+            if ( $post->ID === $current_post_id ) {
+                continue;
+            }
             $post_type_obj = get_post_type_object( $post->post_type );
             $results[]     = array(
                 'id'        => $post->ID,
@@ -301,6 +303,8 @@ class Media_Attachment_Bulk_Move {
                 'edit_link' => get_edit_post_link( $post->ID, 'raw' ),
             );
         }
+
+        $results = array_slice( $results, 0, 20 );
 
         wp_send_json_success( array( 'posts' => $results ) );
     }
